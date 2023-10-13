@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TEST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+    <style>
+.carousel-container {
+  width: 50%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  background-color: black; /* Couleur de fond noire */
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  width: 300px; /* Ajustez la largeur selon vos besoins */
+  margin: 0 2px;
+  text-align: center;
+}
+
+.carousel img {
+  max-width: 100%;
+}
+
+button {
+  background-color: black; /* Couleur de fond des boutons en noir */
+  color: white; /* Couleur du texte en blanc */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+img{
+    width: 150px;
+    height: 250px;
+
+}
+
+/* Ajoutez du CSS supplémentaire pour le style selon vos préférences */
+
+
+/* Ajoutez du CSS supplémentaire pour le style selon vos préférences */
+
+    </style>
+</head>
+<body>
+    
+    <div class="carousel-container">
+        <div class="carousel">
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974917.ece/ALTERNATES/s615b/0_top-22-kant-n-golo.png" alt="Objet 1">
+           
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+            
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+      
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+           
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+          </div>
+          <div class="carousel-item">
+            <img src="https://i2-prod.mirror.co.uk/incoming/article24974909.ece/ALTERNATES/n310p/0_top-22-cristiano-ronaldo.png" alt="Objet 2">
+          </div>
+        </div>
+        <button id="prev-button">Précédent</button>
+        <button id="next-button">Suivant</button>
+      </div>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
+<Script>
+const carousel = document.querySelector('.carousel');
+const carouselItems = document.querySelectorAll('.carousel-item');
+const prevButton = document.querySelector('#prev-button');
+const nextButton = document.querySelector('#next-button');
+
+let currentIndex = 0;
+const itemWidth = carouselItems[0].offsetWidth;
+
+function showItem(index) {
+  if (index < 0 || index >= carouselItems.length) return;
+  currentIndex = index;
+  const translateX = -currentIndex * itemWidth;
+  carousel.style.transform = `translateX(${translateX}px)`;
+
+  // Désactive le bouton "Suivant" lorsque nous atteignons le dernier élément
+  if (currentIndex === carouselItems.length - 1) {
+    nextButton.disabled = true;
+  } else {
+    nextButton.disabled = false;
+  }
+
+  // Désactive le bouton "Précédent" lorsque nous sommes sur le premier élément
+  if (currentIndex === 0) {
+    prevButton.disabled = true;
+  } else {
+    prevButton.disabled = false;
+  }
+}
+
+// Pour le bouton Suivant :
+nextButton.addEventListener('click', () => {
+  showItem(currentIndex + 1);
+});
+
+// Pour le bouton Précédent :
+prevButton.addEventListener('click', () => {
+  showItem(currentIndex - 1);
+});
+
+// Affichez le premier élément du carrousel au chargement de la page.
+showItem(0);
+
+function showItem(index) {
+  if (index < 0 || index >= carouselItems.length) return;
+  currentIndex = index;
+  
+  // Calculez la nouvelle position du carrousel
+  const translateX = -currentIndex * itemWidth;
+  carousel.style.transform = `translateX(${translateX}px)`;
+
+  // Désactive le bouton "Suivant" lorsque nous atteignons le dernier élément
+  if (currentIndex === carouselItems.length - 1) {
+    nextButton.disabled = true;
+  } else {
+    nextButton.disabled = false;
+  }
+
+  // Désactive le bouton "Précédent" lorsque nous sommes sur le premier élément
+  if (currentIndex === 0) {
+    prevButton.disabled = true;
+  } else {
+    prevButton.disabled = false;
+  }
+}
+var flkty = new Flickity('.carousel', {
+            cellAlign: 'left',
+            contain: true
+        });
+</Script>
+
+</body>
+</html>
